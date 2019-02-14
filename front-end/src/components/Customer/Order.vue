@@ -4,20 +4,12 @@
         <button @click="toHome" type="button" class="btn btn-primary">Back</button>
         <button @click="toSubmit(tableNumber)" type="button" class="btn btn-primary">Submit</button>
       </div>
-      <div class="basket">
-        <label for="exampleFormControlSelect1">Basket</label>
-        <div class="card">
-          <ul class="list-group" v-for="menuList in menuLists" :key="menuList.id">
-            <li class="list-group-item">
-              {{menuList.order_name}}: {{menuList.order_price}}
-              <button type="button" class="btn btn-link" @click.prevent="deleteMenu(menuList)">Delete Menu</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="menu">
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Table {{tableNumber}}</label><br>
+      <div class="row">
+        <div class="col">
+          <div>
+            <label for="exampleFormControlSelect1">Basket</label>
+            <div class="form-group">
+          <label>Table {{tableNumber}}</label><br>
           <label>Total price: {{sumTotalPrice}}</label>
           <select class="form-control" id="exampleFormControlSelect1" v-model="tableNumber">
             <option v-for="table in tables" :key="table.id">
@@ -27,6 +19,18 @@
             </option>
           </select>
         </div>
+            <div class="card">
+              <ul class="list-group" v-for="menuList in menuLists" :key="menuList.id">
+                <li class="list-group-item">
+                {{menuList.order_name}}: {{menuList.order_price}}
+                <button type="button" class="btn btn-link" @click.prevent="deleteMenu(menuList)">Delete Menu</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
         <div class="card">
           <div class="card-body">
               <h5 class="card-title">Food</h5>
@@ -42,8 +46,10 @@
               </div>
           </div>
         </div>
-        <b-dd-divider></b-dd-divider>
-        <div class="card">
+      </div>
+        </div>
+        <div class="col">
+          <div class="card">
           <div class="card-body">
               <h5 class="card-title">Drink</h5>
               <div class="card" v-for="drink in drinks" :key="drink.id">
@@ -57,6 +63,7 @@
                   </div>
               </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -107,7 +114,8 @@ export default {
         amount: this.orderQty,
         time: date + '/' + month + '/' + year + ' ' + hour + ':' + minute,
         img: food.source,
-        gen: this.random
+        gen: this.random,
+        price: this.totalPrice
       })
       this.menuLists.push({
         order_id: food.id,
@@ -134,7 +142,8 @@ export default {
         amount: this.orderQty,
         time: date + '/' + month + '/' + year + ' ' + hour + ':' + minute,
         img: drink.source,
-        gen: this.random
+        gen: this.random,
+        price: this.totalPrice
       })
       this.menuLists.push({
         order_id: drink.id,

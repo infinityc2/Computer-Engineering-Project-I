@@ -7,12 +7,13 @@
               <ul class="list-group" v-for="menu in menus" :key="menu.id">
                   <li class="list-group-item">
                     <div v-for="order in orders" :key="order.id">
-                      <div v-if="order.gen===menu.gen">
+                      <div v-if="order.gen===menu.gen&&order.status!=='purchased'">
                         <img :src="menu.img">
                         {{menu.order_id}}<br>
                         Qty: {{menu.amount}}<br>
                         time: {{order.time}}<br>
                         price: {{order.totalPrice}}<br>
+                        <div class="dropdown-divider"></div>
                       </div>
                     </div>
                   </li>

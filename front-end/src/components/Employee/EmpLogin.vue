@@ -11,6 +11,7 @@
                   <label>Password</label>
                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
               </div>
+              <router-link to="/login">Admin?</router-link><br>
               <button type="submit" class="btn btn-primary" v-on:click="login">Submit</button>
           </form>
       </div>

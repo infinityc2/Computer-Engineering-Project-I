@@ -1,26 +1,42 @@
 <template>
   <div class="container">
-    <button class="btn btn-primary" @click="toAdmin">Back</button>
+    <button class="btn btn-primary" @click="toEmp">Back</button>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Bill</h5>
           <div class="card" v-for="order in orders" :key="order.id">
-            order id: <strong>{{order.id}}</strong><br>
             status: {{order.status}}<br>
             table: {{order.table_id}}<br>
             amount order: {{order.amount_order}}<br>
+            total price: {{order.totalPrice}}<br>
             time: {{order.time}}
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Menu</h5>
-          <div class="card" v-for="(menu, index) in menus" :key="menu.id">
-            {{index+1}}.
-            menu id: {{menu.order_id}}<br>
-            amount: {{menu.amount}}<br>
-            time: {{menu.time}}
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Menu</h5>
+                <div v-for="menu in menus" :key="menu.id">
+                  <div v-if="menu.gen===order.gen">
+                    name: {{menu.order_id}}<br>
+                    price: {{menu.price}}<br>
+                    amount: {{menu.amount}}<br>
+                    time: {{menu.time}}
+                    <div class="dropdown-divider"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="order!==edit_status">
+                <button type="button" class="btn btn-link" @click.prevent="editStatus(order)">Edit</button>
+            </div>
+            <div v-else>
+              <select class="form-control" v-model="status">
+                <option value="no purchase">no purchase</option>
+                <option value="inprogress">inprogress</option>
+                <option value="purchased">purchased</option>
+              </select>
+              <br>
+              <button type="button" class="btn btn-link" @click.prevent="cancel">Cancel</button>
+              <button type="button" class="btn btn-link" @click.prevent="updateStatus(order)">Update</button>
+            </div>
           </div>
         </div>
       </div>
@@ -31,21 +47,44 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'Receive',
+  name: 'EmpBill',
   data () {
     return {
       bills: [],
       orders: [],
       listOrders: [],
+
+      // check expand list
+      isExpand: null,
+
       // list of food and drink
       foods: [],
       drinks: [],
+
+      status: '',
+      edit_status: null,
       menus: []
     }
   },
   methods: {
-    toAdmin: function () {
+    toEmp: function () {
       this.$router.replace('/empmanage')
+    },
+    expand: function () {
+      this.isExpand = !this.isExpand
+    },
+    editStatus: function (order) {
+      this.edit_status = order
+      this.status = order.status
+    },
+    cancel: function () {
+      this.edit_status = null
+    },
+    updateStatus: function (order) {
+      const database = firebase.database()
+      const orderRef = database.ref('Order')
+      orderRef.child(order.id).update({status: this.status})
+      this.cancel()
     }
   },
   created () {
@@ -65,7 +104,9 @@ export default {
         this.menus.push({
           amount: snapshot.child('menu').child(i).child('amount').val(),
           order_id: snapshot.child('menu').child(i).child('order_id').val(),
-          time: snapshot.child('menu').child(i).child('time').val()
+          time: snapshot.child('menu').child(i).child('time').val(),
+          gen: snapshot.child('menu').child(i).child('gen').val(),
+          price: snapshot.child('menu').child(i).child('price')
         })
       }
     })

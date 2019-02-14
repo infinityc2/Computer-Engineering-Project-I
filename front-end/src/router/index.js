@@ -18,6 +18,7 @@ import EmpManage from '@/components/Employee/EmpManage'
 import ClearTable from '@/components/Employee/ClearTable'
 import Stock from '@/components/Employee/Stock'
 import EmpBill from '@/components/Employee/EmpBill'
+import Service from '@/components/Admin/Service'
 // import firebase from 'firebase'
 
 Vue.use(Router)
@@ -70,6 +71,14 @@ const router = new Router({
       path: '/emp',
       name: 'ManageEmp',
       component: ManageEmp,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/service',
+      name: 'Service',
+      component: Service,
       meta: {
         requiresAuth: true
       }

@@ -5,10 +5,12 @@
         <div class="card-body">
           <h5 class="card-title">Bill</h5>
           <div class="card" v-for="order in orders" :key="order.id">
-            status: {{order.status}}<br>
+            <div v-if="order.status==='purchased'">
+              status: {{order.status}}<br>
             table: {{order.table_id}}<br>
             amount order: {{order.amount_order}}<br>
-            time: {{order.time}}
+            time: {{order.time}}<br>
+            total price: {{order.totalPrice}}
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Menu</h5>
@@ -16,7 +18,9 @@
                   <div v-if="menu.gen===order.gen">
                     name: {{menu.order_id}}<br>
                     amount: {{menu.amount}}<br>
-                    time: {{menu.time}}
+                    time: {{menu.time}}<br>
+                    price: {{menu.price}}
+                    <div class="dropdown-divider"></div>
                   </div>
                 </div>
               </div>
@@ -33,6 +37,7 @@
               <br>
               <button type="button" class="btn btn-link" @click.prevent="cancel">Cancel</button>
               <button type="button" class="btn btn-link" @click.prevent="updateStatus(order)">Update</button>
+            </div>
             </div>
           </div>
         </div>
@@ -102,7 +107,8 @@ export default {
           amount: snapshot.child('menu').child(i).child('amount').val(),
           order_id: snapshot.child('menu').child(i).child('order_id').val(),
           time: snapshot.child('menu').child(i).child('time').val(),
-          gen: snapshot.child('menu').child(i).child('gen').val()
+          gen: snapshot.child('menu').child(i).child('gen').val(),
+          price: snapshot.child('menu').child(i).child('price').val()
         })
       }
     })

@@ -8,7 +8,7 @@
         <b-list-group-item variant="primary" @click="toEmp" button>Manage Employee</b-list-group-item>
         <b-list-group-item variant="primary" button>How to use</b-list-group-item>
         <b-list-group-item variant="primary" @click="toTable" button>Clear Table</b-list-group-item>
-        <b-list-group-item variant="primary" @click="toHistory" button>History</b-list-group-item>
+        <b-list-group-item variant="primary" @click="toService" button>Service</b-list-group-item>
         <b-list-group-item variant="primary" @click="toComment" button>Comment</b-list-group-item>
         <b-list-group-item variant="primary" @click="logout" button>Logout</b-list-group-item>
       </b-list-group>
@@ -43,8 +43,8 @@ export default {
     toTable: function () {
       this.$router.replace('/managetable')
     },
-    toHistory: function () {
-      this.$router.replace('/purchased')
+    toService: function () {
+      this.$router.replace('/service')
     }
   }
 }
