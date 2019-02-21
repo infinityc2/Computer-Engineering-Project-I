@@ -6,9 +6,7 @@
         <b-list-group-item variant="primary" @click="toBill" button>Bill</b-list-group-item>
         <b-list-group-item variant="primary" @click="toManage" button>increase/decrease Food or Drink</b-list-group-item>
         <b-list-group-item variant="primary" @click="toEmp" button>Manage Employee</b-list-group-item>
-        <b-list-group-item variant="primary" button>How to use</b-list-group-item>
         <b-list-group-item variant="primary" @click="toTable" button>Clear Table</b-list-group-item>
-        <b-list-group-item variant="primary" @click="toService" button>Service</b-list-group-item>
         <b-list-group-item variant="primary" @click="toComment" button>Comment</b-list-group-item>
         <b-list-group-item variant="primary" @click="logout" button>Logout</b-list-group-item>
       </b-list-group>
@@ -42,9 +40,6 @@ export default {
     },
     toTable: function () {
       this.$router.replace('/managetable')
-    },
-    toService: function () {
-      this.$router.replace('/service')
     }
   }
 }

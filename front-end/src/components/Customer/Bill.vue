@@ -13,6 +13,7 @@
                         Qty: {{menu.amount}}<br>
                         time: {{order.time}}<br>
                         price: {{order.totalPrice}}<br>
+                        status: {{order.status}}
                         <div class="dropdown-divider"></div>
                       </div>
                     </div>

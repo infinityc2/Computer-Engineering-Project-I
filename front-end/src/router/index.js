@@ -18,8 +18,8 @@ import EmpManage from '@/components/Employee/EmpManage'
 import ClearTable from '@/components/Employee/ClearTable'
 import Stock from '@/components/Employee/Stock'
 import EmpBill from '@/components/Employee/EmpBill'
-import Service from '@/components/Admin/Service'
-// import firebase from 'firebase'
+import Service from '@/components/Employee/Service'
+import firebase from 'firebase'
 
 Vue.use(Router)
 
@@ -168,13 +168,13 @@ const router = new Router({
   ]
 })
 
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   if (requiresAuth && !currentUser) next('login')
-  else if (!requiresAuth && currentUser) next('home')
+  // else if (!requiresAuth && currentUser) next('home')
   else next()
-}) */
+})
 
 export default router

@@ -3,10 +3,9 @@
     <div>
       <h4>Menu</h4>
       <b-list-group>
-        <b-list-group-item to="/order">Select Menu</b-list-group-item>
-        <b-list-group-item to="/howto">How to use</b-list-group-item>
-        <b-list-group-item to="/bill">Bill</b-list-group-item>
-        <b-list-group-item to="/comments">Comment</b-list-group-item>
+        <b-list-group-item @click="toOrder">Select Menu</b-list-group-item>
+        <b-list-group-item @click="toBill">Bill</b-list-group-item>
+        <b-list-group-item @click="toComment">Comment and Service</b-list-group-item>
       </b-list-group>
     </div>
   </div>
@@ -23,11 +22,14 @@ export default {
     }
   },
   methods: {
-    onSlideStart (slide) {
-      this.sliding = true
+    toOrder: function () {
+      this.$router.replace('/order')
     },
-    onSlideEnd (slide) {
-      this.sliding = false
+    toBill: function () {
+      this.$router.replace('/bill')
+    },
+    toComment: function () {
+      this.$router.replace('/comments')
     }
   }
 }
