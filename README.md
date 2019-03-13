@@ -8,6 +8,3 @@
 > Vue.js
 > Firebase
 
-##### I have no time much 
-##### I decorate my code later
-##### and renovate later
