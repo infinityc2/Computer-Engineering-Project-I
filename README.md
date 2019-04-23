@@ -4,7 +4,13 @@
 > example project
 > <a href="projectcpe-2775c.firebaseapp.com">projectcpe-2775c.firebaseapp.com</a>
 
-# Frameworks
+## Frameworks
 > Vue.js <br>
-> Firebase
+> Firebase <br>
+> bootstrap
 
+## Initial Project
+> npm install
+
+## Runproject
+> npm run dev
