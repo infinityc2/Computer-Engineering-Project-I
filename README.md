@@ -1,7 +1,7 @@
 # Computer-Engineering-Project-I
 ## Restaurant System
 
-> example project
+> sample project
 > <a href="projectcpe-2775c.firebaseapp.com">projectcpe-2775c.firebaseapp.com</a>
 
 ## Frameworks
