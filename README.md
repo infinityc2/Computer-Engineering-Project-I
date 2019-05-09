@@ -1,16 +1,22 @@
 # Computer-Engineering-Project-I
 ## Restaurant System
+project restaurant system prototype has features and many `BUG`
 
-> sample project
+###sample project
 > <a href="projectcpe-2775c.firebaseapp.com">projectcpe-2775c.firebaseapp.com</a>
 
 ## Frameworks
-> Vue.js <br>
-> Firebase <br>
-> bootstrap
+```
+Vue.js
+Firebase
+bootstrap
+```
 
 ## Initial Project
-> npm install
+```
+$ git clone https://github.com/infinityc2/Computer-Engineering-Project-I.git
+$ npm install
+```
 
 ## Runproject
 > npm run dev
