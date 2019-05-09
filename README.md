@@ -2,7 +2,7 @@
 ## Restaurant System
 project restaurant system prototype has features and many `BUG`
 
-###sample project
+### sample project
 > <a href="projectcpe-2775c.firebaseapp.com">projectcpe-2775c.firebaseapp.com</a>
 
 ## Frameworks
